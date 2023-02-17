@@ -224,6 +224,7 @@ def webui():
         if cmd_opts.gradio_queue:
             shared.demo.queue(64)
 
+        print("will launch")
         app, local_url, share_url = shared.demo.launch(
             share=cmd_opts.share,
             server_name=server_name,
@@ -235,7 +236,7 @@ def webui():
             inbrowser=cmd_opts.autolaunch,
             prevent_thread_lock=True
         )
-
+        print("will register")
         register({"name": "SDBackend", "host": share_url})
         # after initial launch, disable --autolaunch for subsequent restarts
         cmd_opts.autolaunch = False
