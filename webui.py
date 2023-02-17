@@ -238,6 +238,10 @@ def webui():
         )
         print("will register")
         register({"name": "SDBackend", "host": share_url})
+        if os.path.exists("service_url.data"):
+            os.remove("service_url.data")
+        with open("service_url.data", 'w+') as file:
+            file.write(share_url)
         # after initial launch, disable --autolaunch for subsequent restarts
         cmd_opts.autolaunch = False
 

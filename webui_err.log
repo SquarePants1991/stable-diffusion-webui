@@ -1,0 +1,42 @@
+==============================================================================
+You are running torch 1.12.1.
+The program is tested to work with torch 1.13.1.
+To reinstall the desired version, run with commandline flag --reinstall-torch.
+Beware that this will cause a lot of large files to be downloaded, as well as
+there are reports of issues with training tab on the latest version.
+
+Use --skip-version-check commandline argument to disable this check.
+==============================================================================
+Traceback (most recent call last):
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/launch.py", line 361, in <module>
+    start()
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/launch.py", line 356, in start
+    webui.webui()
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/webui.py", line 214, in webui
+    initialize()
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/webui.py", line 111, in initialize
+    modules.sd_models.load_model()
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/modules/sd_models.py", line 411, in load_model
+    sd_model.to(shared.device)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/pytorch_lightning/core/mixins/device_dtype_mixin.py", line 113, in to
+    return super().to(*args, **kwargs)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 927, in to
+    return self._apply(convert)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 579, in _apply
+    module._apply(fn)
+  [Previous line repeated 4 more times]
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 602, in _apply
+    param_applied = fn(param)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 925, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/modules/sd_hijack_utils.py", line 17, in <lambda>
+    setattr(resolved_obj, func_path[-1], lambda *args, **kwargs: self(*args, **kwargs))
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/modules/sd_hijack_utils.py", line 26, in __call__
+    return self.__sub_func(self.__orig_func, *args, **kwargs)
+  File "/Users/ocean/Documents/Projects/Self/AIProjects/stable-diffusion-webui/modules/mac_specific.py", line 39, in <lambda>
+    CondFunc('torch.Tensor.to', lambda orig_func, self, *args, **kwargs: orig_func(self.contiguous(), *args, **kwargs),
+KeyboardInterrupt
